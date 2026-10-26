@@ -1,6 +1,6 @@
 # UniVA
 
-Core training code for **A Unified Framework for Verification and Attribution of Generated Images and Generative Models**, by Jianwei Fei, Yunshu Dai, Daniele Baracchi, Dasara Shullani, Zhihua Xia, and Alessandro Piva.
+Core training code for **A Unified Framework for Verification and Attribution of Generated Images and Generative Models**
 
 UniVA learns content-agnostic model fingerprints from real images reconstructed by a dynamic fingerprint simulator. A frozen denoiser extracts noise residuals, their log-magnitude Fourier spectra are encoded by ResNet-50, and cross-content/fixed-content branches train the extractor with supervised contrastive and pairwise verification losses. The learned fingerprints support image source verification, model homology verification, and open-set attribution.
 
@@ -43,7 +43,7 @@ python train.py \
   --output-dir runs
 ```
 
-The default recipe uses 10,000 steps, eight configurations per branch, 16 images per configuration, 128-pixel training crops, 128-dimensional embeddings, and Adam with a linear learning-rate schedule from `1e-4` to `3e-6`. Temperature increases from `0.02` to `0.1`; the negative-similarity penalty starts at step 3,000. These defaults retain the supplied training script's recipe and are configurable with `python train.py --help`.
+The default recipe uses 10,000 steps, eight configurations per branch, 16 images per configuration, 256-pixel training crops, 128-dimensional embeddings, and Adam with a linear learning-rate schedule from `1e-4` to `3e-6`. Temperature increases from `0.02` to `0.1`; the negative-similarity penalty starts at step 3,000. These defaults retain the supplied training script's recipe and are configurable with `python train.py --help`.
 
 Each run saves configuration, logs, and periodic/final checkpoints. Resume with the same training arguments plus `--resume runs/<run>/step-0001000.pth`. This restores model/optimizer/scheduler state and architecture position; the image loader and random-number states restart. Reduce `--batch-size` or `--num-classes` if needed, keeping both at least two. Use `--workers 0` for single-process data loading.
 
