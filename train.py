@@ -42,7 +42,7 @@ def parse_args():
     parser.add_argument(
         "--num-classes", type=int, default=8, help="Architectures per branch."
     )
-    parser.add_argument("--image-size", type=int, default=128)
+    parser.add_argument("--image-size", type=int, default=256)
     parser.add_argument("--feature-dim", type=int, default=128)
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--steps", type=int, default=10000)
